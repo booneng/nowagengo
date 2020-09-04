@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package nowaproto;
+
+option go_package = "github.com/booneng/nowagengo";
+
+message Restaurant {
+    // Unique identifier for the restaurant.
+    int32 restaurant_id = 1;
+
+    // Name of the restaurant.
+    string name = 2;
+
+    // List of menu items belonging to this restaurant.
+    repeated MenuItem menu_items = 3;
+}
+
+message MenuItem {
+    // Unique identifier for the menu item.
+    int64 item_id = 1;
+
+    enum Status {
+        UNKNOWN = 0;
+        ACTIVE = 1;
+        SOLD_OUT = 2;
+    }
+
+    // Status of the menu item.
+    Status status = 2;
+
+    // Name of the menu item.
+    string name = 3;
+
+    // Description of the menu item.
+    string description = 4;
+}
+
+message Order {
+    // Unique identifier for the order.
+    int64 order_id = 1;
+
+    // ID of the user who placed the order.
+    int64 user_id = 2;
+
+    // ID of the restaurant that the order is for.
+    int32 restaurant_id = 3;
+
+    enum Status {
+        UNKNOWN = 0;
+        ACTIVE = 1;
+        COMPLETED = 2;
+        CANCELLED = 3;
+    }
+
+    // Status of the order.
+    Status status = 4;
+
+    message OrderItem {
+        // Menu item.
+        MenuItem menu_item = 1;
+
+        // Quantity of the menu_item.
+        int32 quantity = 2;
+    }
+
+    // List of items in this order.
+    repeated OrderItem order_item = 5;
+}
