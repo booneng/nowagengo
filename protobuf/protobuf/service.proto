@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package nowaproto;
+
+import "nowa.proto";
+
+option go_package = "github.com/booneng/nowagengo";
+
+// Request message for getting a restaurant object.
+message GetRestaurantRequest {
+    int32 restaurant_id = 1;
+}
+
+// Response message containing restaurant object.
+message GetRestaurantResponse {
+    Restaurant restaurant = 1;
+}
+
+// Nowa gRPC service.
+service Nowa {
+    // Gets a restaurant using the restaurant ID.
+    rpc GetRestaurant(GetRestaurantRequest) returns (GetRestaurantResponse) {}
+}
