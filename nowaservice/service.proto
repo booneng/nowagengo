@@ -4,7 +4,7 @@ package nowaproto;
 
 import "nowa.proto";
 
-option go_package = "github.com/booneng/nowagengo";
+option go_package = "github.com/booneng/nowagengo/nowaservice";
 
 // Request message for getting a restaurant object.
 message GetRestaurantRequest {
