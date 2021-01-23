@@ -1,0 +1,3 @@
+[submodule "nowaproto"]
+	path = nowaproto
+	url = https://github.com/booneng/nowaproto
